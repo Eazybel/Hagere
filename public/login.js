@@ -24,14 +24,14 @@ signInWithPopup(auth, provider)
     const token = credential.accessToken;
     const user = result.user;
     console.log(user
-      
+
     )
    //NEW USER REGISTERING SYSTEM OR CHECKING USER AVAILABLITY
 fetch("/newUserRegister",
       {
         method:"POST",
         headers:{"Content-type":"application/json"},
-        body:JSON.stringify({"name":user.displayName,"email":user.email,"avatar":user.photoUrl})
+        body:JSON.stringify({"name":user.displayName,"email":user.email,"avatar":user.photoURL})
       }
     
     ).then(res=>{return res.json()}).then(data=>{console.log(data)})

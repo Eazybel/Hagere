@@ -2,16 +2,18 @@
 const mongoose=require("mongoose")
 const userModel=require("../models/User")
 const userController=async(req,res)=>{
-// const isUser=await userModel.findOne({"email":req.body.email})
+const isUser=await userModel.findOne({"email":req.body.email})
 const {name,email,avatar}=req.body
-// if(isUser){
-// console.log("user")
-// }else if(!isUser){
-//     console.log("not user")
-// }
-    // const newUserr=new userModel({
-
-    // })
+if(isUser){
+console.log("user is already registered")
+}else if(!isUser){
+const newUser=new userModel({
+    name:name,
+    email:email,
+    avatar:avatar
+    })
+    newUser.save().then(()=>console.log("user saved"))
+}
     res.send(req.body)
 }
 module.exports=userController
